@@ -4,6 +4,9 @@ ArrayList<PVector> targets;
 
 Explosion explosion;
 
+// Background systems
+SS_StarscapeManager starscapeManager;
+
 void setup() {
   size(1024,768, JAVA2D);
   
@@ -11,6 +14,9 @@ void setup() {
   as.setup();
   
   setupAnts();
+  
+  // Setup background
+  starscapeManager = new SS_StarscapeManager(width, height);
 }
 
 void setupAnts()
@@ -53,7 +59,9 @@ void update() {
 
 
 void draw() {
-  background(255, 255, 255);
+  // Draw background
+  image(starscapeManager.getCanvas(), 0,0);
+  
   as.draw();
   
   AI bread;
